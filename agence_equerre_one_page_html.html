@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agence de l'Équerre — Syndic à Louvain-la-Neuve</title>
+  <meta name="description" content="Syndic de copropriété à Louvain-la-Neuve et en Brabant wallon. Gestion claire, rigoureuse et accessible depuis 2003." />
+  <meta property="og:title" content="Agence de l'Équerre — Syndic à Louvain-la-Neuve" />
+  <meta property="og:description" content="Syndic, gestion locative, vente et location. Une agence familiale, locale et agréée IPI." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f4f1;
+      --surface:#ffffff;
+      --ink:#101010;
+      --muted:#66615d;
+      --border:rgba(16,16,16,.12);
+      --dark:#0f0402;
+      --dark-soft:#1a100e;
+      --accent:#db0f05;
+      --accent-hover:#c10d04;
+      --accent-soft:rgba(219,15,5,.08);
+      --shadow:0 34px 90px rgba(15,15,15,.14);
+      --radius:30px;
+      --container:min(100% - 40px,1320px);
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(219,15,5,.06), transparent 26%),
+        linear-gradient(180deg,#fafafa 0%,var(--bg) 48%,#f3efea 100%);
+      overflow-x:hidden;
+    }
+
+    body.menu-open{overflow:hidden}
+
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+
+    .container{width:var(--container);margin-inline:auto}
+    .section{padding:clamp(64px,8vw,116px) 0}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:11px;
+      line-height:1.2;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:900;
+      color:var(--accent);
+    }
+    .eyebrow::before{
+      content:"";
+      width:28px;
+      height:2px;
+      background:currentColor;
+      border-radius:99px;
+    }
+    h1,h2,h3,p{margin:0}
+    h1,h2,h3{text-wrap:balance;letter-spacing:-.04em}
+    h1{
+      font-size:clamp(44px,6.6vw,96px);
+      line-height:.9;
+      font-weight:900;
+      max-width:890px;
+    }
+    h2{
+      font-size:clamp(34px,4.5vw,66px);
+      line-height:.96;
+      font-weight:900;
+      max-width:840px;
+    }
+    h3{
+      font-size:clamp(22px,2vw,30px);
+      line-height:1.08;
+      font-weight:850;
+    }
+    .lead{
+      font-size:clamp(18px,1.45vw,22px);
+      line-height:1.55;
+      font-weight:400;
+      color:var(--muted);
+      max-width:66ch;
+    }
+    .copy{font-size:16px;line-height:1.7;color:var(--muted);max-width:68ch}
+
+    .btn{
+      display:inline-flex;
+      min-height:52px;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:1px solid transparent;
+      border-radius:999px;
+      padding:0 22px;
+      font-weight:850;
+      letter-spacing:-.02em;
+      cursor:pointer;
+      transition:transform .28s var(--ease), background .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease);
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 18px 44px rgba(219,15,5,.22)}
+    .btn-primary:hover{background:var(--accent-hover)}
+    .btn-secondary{background:#fff;color:var(--ink);border-color:var(--border)}
+    .btn-secondary:hover{border-color:rgba(219,15,5,.35);color:var(--accent)}
+    .btn-dark{background:var(--dark);color:#fff}
+
+    .site-header{
+      position:fixed;
+      inset:18px 0 auto;
+      z-index:50;
+      pointer-events:none;
+    }
+    .nav-shell{
+      width:min(100% - 32px,1320px);
+      height:66px;
+      margin-inline:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:8px 10px 8px 18px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      background:rgba(15,4,2,.84);
+      color:#fff;
+      backdrop-filter:blur(18px);
+      box-shadow:0 20px 60px rgba(0,0,0,.22);
+      pointer-events:auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:-.03em;
+      min-width:max-content;
+    }
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:var(--accent);
+      font-family:"Bebas Neue",Inter,sans-serif;
+      font-size:24px;
+      letter-spacing:.02em;
+      box-shadow:inset 0 0 0 3px rgba(219,15,5,.09);
+    }
+    .nav-links{display:flex;align-items:center;gap:4px;color:rgba(255,255,255,.78)}
+    .nav-links a{
+      padding:12px 13px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      transition:background .25s var(--ease), color .25s var(--ease);
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
+    .nav-actions{display:flex;align-items:center;gap:8px}
+    .nav-actions .btn{min-height:48px;padding:0 18px}
+    .menu-btn{display:none;background:#fff;color:var(--dark);border:0;border-radius:999px;min-height:48px;padding:0 17px;font-weight:900;cursor:pointer}
+
+    .mobile-panel{
+      position:fixed;
+      inset:0;
+      z-index:45;
+      background:rgba(15,4,2,.96);
+      color:#fff;
+      display:none;
+      padding:108px 24px 32px;
+    }
+    .mobile-panel.is-open{display:block}
+    .mobile-panel a{display:block;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:26px;font-weight:900;letter-spacing:-.04em}
+    .mobile-panel .btn{margin-top:26px;width:100%}
+
+    .hero{
+      min-height:100svh;
+      padding:104px 0 32px;
+      position:relative;
+    }
+    .hero-stage{
+      position:relative;
+      min-height:calc(100svh - 136px);
+      border-radius:42px;
+      overflow:hidden;
+      background:#ddd;
+      box-shadow:0 40px 100px rgba(16,16,16,.16);
+      isolation:isolate;
+    }
+    .hero-bg{
+      position:absolute;
+      inset:-2% -2% 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.2) 42%, rgba(0,0,0,.08) 100%),
+        url('/Hero-image.jpg') center/cover no-repeat;
+      transform:scale(1.03);
+      z-index:-2;
+    }
+    .hero-bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.08) 54%, rgba(0,0,0,.35) 100%);
+      z-index:-1;
+    }
+    .hero-content{
+      position:absolute;
+      left:clamp(22px,4vw,58px);
+      bottom:clamp(22px,4vw,58px);
+      width:min(720px,calc(100% - 44px));
+      padding:clamp(28px,4vw,52px);
+      border-radius:38px;
+      background:rgba(255,255,255,.96);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    .hero-content .eyebrow{margin-bottom:18px}
+    .hero-content h1{font-size:clamp(38px,4.7vw,72px);line-height:.92;margin-bottom:20px}
+    .hero-content .lead{margin-bottom:26px;color:#4f4a47}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-proof{
+      position:absolute;
+      right:clamp(20px,3.2vw,44px);
+      bottom:clamp(20px,3.2vw,44px);
+      display:grid;
+      grid-template-columns:repeat(2,minmax(145px,1fr));
+      gap:10px;
+      width:min(420px,38vw);
+    }
+    .proof-chip{
+      padding:18px;
+      border-radius:22px;
+      background:rgba(15,4,2,.72);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(14px);
+    }
+    .proof-chip strong{display:block;font-size:22px;line-height:1;font-weight:900;letter-spacing:-.04em}
+    .proof-chip span{display:block;margin-top:7px;color:rgba(255,255,255,.74);font-size:13px;line-height:1.35}
+
+    .section-head{
+      display:grid;
+      grid-template-columns:minmax(160px,290px) 1fr;
+      gap:clamp(24px,5vw,70px);
+      align-items:start;
+      margin-bottom:clamp(32px,5vw,62px);
+    }
+    .section-head .lead{margin-top:10px}
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--surface);
+      box-shadow:0 20px 70px rgba(16,16,16,.06);
+    }
+    .trust-card{
+      min-height:250px;
+      padding:28px;
+      border-right:1px solid var(--border);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:background .28s var(--ease), color .28s var(--ease), transform .28s var(--ease);
+    }
+    .trust-card:last-child{border-right:0}
+    .trust-card:hover{background:var(--dark);color:#fff;transform:scale(1.035);z-index:2}
+    .trust-card:hover p,.trust-card:hover .card-num{color:rgba(255,255,255,.72)}
+    .card-num{font-size:13px;color:var(--accent);font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .trust-card p{margin-top:16px;color:var(--muted);line-height:1.65}
+
+    .problem{
+      background:var(--dark);
+      color:#fff;
+      border-radius:42px;
+      width:min(100% - 40px,1420px);
+      margin-inline:auto;
+      overflow:hidden;
+      position:relative;
+    }
+    .problem::before{
+      content:"";
+      position:absolute;
+      width:420px;height:420px;
+      right:-140px;top:-160px;
+      background:radial-gradient(circle, rgba(219,15,5,.36), transparent 66%);
+      filter:blur(6px);
+    }
+    .problem-inner{
+      position:relative;
+      padding:clamp(56px,7vw,96px) clamp(24px,5vw,72px);
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:clamp(34px,6vw,84px);
+      align-items:center;
+    }
+    .problem .eyebrow{color:#ff7a73}
+    .problem .lead{color:rgba(255,255,255,.76)}
+    .pain-list{display:grid;gap:12px}
+    .pain-item{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:16px;
+      align-items:start;
+      padding:20px;
+      border-radius:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.13);
+    }
+    .pain-icon{
+      width:34px;height:34px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--accent);
+      color:#fff;
+      font-weight:900;
+    }
+    .pain-item p{color:rgba(255,255,255,.72);line-height:1.55;margin-top:5px}
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+    .service-card{
+      position:relative;
+      min-height:300px;
+      padding:32px;
+      border-radius:var(--radius);
+      background:var(--surface);
+      border:1px solid var(--border);
+      overflow:hidden;
+      transition:transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+    }
+    .service-card::before{
+      content:"";
+      position:absolute;
+      right:-70px;bottom:-70px;
+      width:180px;height:180px;
+      border-radius:50%;
+      background:var(--accent-soft);
+      transition:transform .35s var(--ease), background .35s var(--ease);
+    }
+    .service-card:hover{
+      transform:translateY(-6px) scale(1.02);
+      background:var(--accent);
+      color:#fff;
+      border-color:transparent;
+    }
+    .service-card:hover::before{transform:scale(1.6);background:rgba(255,255,255,.12)}
+    .service-card:hover p,.service-card:hover .service-tag{color:rgba(255,255,255,.78)}
+    .service-tag{position:relative;color:var(--accent);font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:90px}
+    .service-card h3,.service-card p{position:relative}
+    .service-card p{margin-top:14px;color:var(--muted);line-height:1.65;max-width:56ch}
+
+    .wide-image{
+      padding-top:0;
+    }
+    .image-panel{
+      min-height:clamp(420px,55vw,690px);
+      border-radius:42px;
+      overflow:hidden;
+      position:relative;
+      background:url('/team-agence.jpg') center/cover no-repeat;
+      box-shadow:0 30px 90px rgba(16,16,16,.12);
+    }
+    .image-panel::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(90deg,rgba(15,4,2,.62),rgba(15,4,2,.16) 55%,rgba(15,4,2,.05));
+    }
+    .quote-card{
+      position:absolute;
+      left:clamp(24px,4vw,58px);
+      bottom:clamp(24px,4vw,58px);
+      z-index:2;
+      width:min(590px,calc(100% - 48px));
+      padding:clamp(24px,3vw,38px);
+      border-radius:30px;
+      background:rgba(255,255,255,.94);
+      box-shadow:0 24px 70px rgba(0,0,0,.18);
+    }
+    .quote-card p{font-size:clamp(25px,3vw,42px);line-height:1.02;letter-spacing:-.04em;font-weight:900}
+    .quote-card span{display:block;margin-top:16px;color:var(--muted);font-weight:700}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:clamp(28px,5vw,70px);
+      align-items:center;
+    }
+    .about-visual{
+      min-height:560px;
+      border-radius:38px;
+      overflow:hidden;
+      background:url('/contact.jpg') center/cover no-repeat;
+      box-shadow:0 24px 80px rgba(16,16,16,.10);
+    }
+    .about-copy .eyebrow{margin-bottom:16px}
+    .about-copy h2{margin-bottom:24px}
+    .about-copy .copy + .copy{margin-top:16px}
+    .people-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
+    .person-card{padding:22px;border-radius:24px;background:#fff;border:1px solid var(--border)}
+    .person-card strong{display:block;font-weight:900;letter-spacing:-.03em}
+    .person-card span{display:block;margin-top:7px;color:var(--muted);line-height:1.5;font-size:14px}
+
+    .method-wrap{
+      display:grid;
+      grid-template-columns:4fr 8fr;
+      gap:clamp(30px,5vw,70px);
+    }
+    .steps{display:grid;gap:1px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--border)}
+    .step{
+      display:grid;
+      grid-template-columns:96px 1fr;
+      gap:24px;
+      padding:28px;
+      background:#fff;
+      align-items:start;
+    }
+    .step-num{font-size:44px;line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent)}
+    .step p{color:var(--muted);line-height:1.65;margin-top:8px}
+
+    .properties{
+      background:#fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .property-box{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    .property-card{
+      padding:clamp(28px,4vw,48px);
+      border-radius:36px;
+      background:var(--dark);
+      color:#fff;
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+    }
+    .property-card::after{
+      content:"";
+      position:absolute;
+      right:-80px;top:-100px;
+      width:260px;height:260px;border-radius:50%;
+      background:radial-gradient(circle,rgba(219,15,5,.45),transparent 68%);
+    }
+    .property-card .lead{color:rgba(255,255,255,.72)}
+    .property-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;position:relative;z-index:2}
+    .portal-card{padding:clamp(28px,4vw,48px);border-radius:36px;background:var(--accent-soft);border:1px solid rgba(219,15,5,.16);display:flex;flex-direction:column;justify-content:space-between}
+    .portal-card p{margin-top:14px;color:var(--muted);line-height:1.65}
+
+    .final-cta{padding:0 0 clamp(64px,8vw,116px)}
+    .cta-panel{
+      border-radius:42px;
+      background:
+        radial-gradient(circle at 84% 18%, rgba(219,15,5,.38), transparent 30%),
+        linear-gradient(135deg,var(--dark),#050505);
+      color:#fff;
+      padding:clamp(42px,7vw,92px);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:30px;
+      align-items:end;
+      overflow:hidden;
+    }
+    .cta-panel .lead{color:rgba(255,255,255,.72);margin-top:16px}
+
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+    .contact-info,.contact-form{
+      border-radius:36px;
+      background:#fff;
+      border:1px solid var(--border);
+      padding:clamp(26px,4vw,46px);
+      box-shadow:0 20px 70px rgba(16,16,16,.06);
+    }
+    .contact-info .eyebrow{margin-bottom:18px}
+    .info-list{display:grid;gap:16px;margin-top:30px}
+    .info-item{padding:18px;border-radius:22px;background:#fafafa;border:1px solid var(--border)}
+    .info-item strong{display:block;font-weight:900}
+    .info-item span{display:block;margin-top:7px;color:var(--muted);line-height:1.55}
+    form{display:grid;gap:14px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    label{display:grid;gap:8px;color:#3b3532;font-weight:800;font-size:13px}
+    input,textarea{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:16px;
+      min-height:56px;
+      padding:0 16px;
+      background:#fafafa;
+      color:var(--ink);
+      outline:0;
+      transition:border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+    }
+    textarea{min-height:146px;padding:16px;resize:vertical}
+    input:focus,textarea:focus{border-color:rgba(219,15,5,.65);box-shadow:0 0 0 4px rgba(219,15,5,.10);background:#fff}
+    .form-note{font-size:13px;color:var(--muted);line-height:1.5;margin-top:2px}
+
+    footer{padding:30px 0 42px;color:var(--muted)}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--border);padding-top:24px;font-size:14px}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a:hover{color:var(--accent)}
+
+    [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease), transform .75s var(--ease)}
+    [data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:1080px){
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex;align-items:center;justify-content:center}
+      .hero-proof{display:none}
+      .hero-content{width:min(680px,calc(100% - 44px))}
+      .trust-grid{grid-template-columns:repeat(2,1fr)}
+      .trust-card:nth-child(2){border-right:0}
+      .trust-card:nth-child(1),.trust-card:nth-child(2){border-bottom:1px solid var(--border)}
+      .problem-inner,.about-grid,.method-wrap,.property-box,.contact-grid{grid-template-columns:1fr}
+      .about-visual{min-height:420px;order:2}
+      .about-copy{order:1}
+      .cta-panel{grid-template-columns:1fr;align-items:start}
+    }
+
+    @media (max-width:760px){
+      :root{--container:min(100% - 28px,1320px)}
+      .section{padding:58px 0}
+      .nav-shell{height:62px;inset:auto;padding-left:12px}
+      .brand span{display:none}
+      .brand-mark{width:40px;height:40px}
+      .nav-actions .btn{display:none}
+      .hero{padding-top:88px}
+      .hero-stage{min-height:760px;border-radius:30px}
+      .hero-bg{background-position:center top}
+      .hero-content{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        width:auto;
+        border-radius:26px;
+        padding:24px;
+      }
+      .hero-content h1{font-size:clamp(34px,10vw,48px)}
+      .hero-cta{display:grid;grid-template-columns:1fr}
+      .btn{width:100%}
+      .section-head{grid-template-columns:1fr;gap:16px;margin-bottom:30px}
+      .trust-grid,.services-grid,.people-grid{grid-template-columns:1fr}
+      .trust-card{border-right:0;border-bottom:1px solid var(--border);min-height:220px}
+      .trust-card:last-child{border-bottom:0}
+      .problem{width:min(100% - 20px,1420px);border-radius:30px}
+      .problem-inner{padding:44px 18px}
+      .service-card{min-height:260px;padding:24px}
+      .service-tag{margin-bottom:70px}
+      .image-panel{border-radius:30px;min-height:560px;background-position:center}
+      .quote-card{left:14px;right:14px;bottom:14px;width:auto;border-radius:24px}
+      .about-visual{min-height:360px;border-radius:30px}
+      .step{grid-template-columns:1fr;gap:12px;padding:24px}
+      .property-card,.portal-card,.contact-info,.contact-form{border-radius:28px}
+      .form-row{grid-template-columns:1fr}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+      [data-reveal]{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Navigation principale">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Agence de l'Équerre">
+        <span class="brand-mark">É</span>
+        <span>Agence de l'Équerre</span>
+      </a>
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#syndic">Syndic</a>
+        <a href="#services">Services</a>
+        <a href="#agence">Agence</a>
+        <a href="#methode">Méthode</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#contact">Demander une offre syndic</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobile-menu" aria-hidden="true">
+    <a href="#syndic">Syndic</a>
+    <a href="#services">Services</a>
+    <a href="#agence">Agence</a>
+    <a href="#methode">Méthode</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-primary" href="#contact">Demander une offre syndic</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-stage">
+          <div class="hero-bg" aria-hidden="true"></div>
+          <div class="hero-content" data-reveal>
+            <span class="eyebrow">Syndic · Courtage · Gestion locative</span>
+            <h1 id="hero-title">Un syndic clair, fiable et présent à Louvain-la-Neuve.</h1>
+            <p class="lead">Depuis 2003, l'Agence de l'Équerre accompagne les copropriétés du Brabant wallon avec une gestion rigoureuse, accessible et structurée.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#contact">Demander une offre syndic</a>
+              <a class="btn btn-secondary" href="#services">Découvrir nos services</a>
+            </div>
+          </div>
+          <div class="hero-proof" aria-label="Preuves de confiance">
+            <div class="proof-chip"><strong>IPI</strong><span>Agence agréée et encadrée</span></div>
+            <div class="proof-chip"><strong>2003</strong><span>Ancrage local durable</span></div>
+            <div class="proof-chip"><strong>~80</strong><span>Bâtiments actuellement gérés</span></div>
+            <div class="proof-chip"><strong>24/7</strong><span>Permanence après bureau</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="syndic">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Pourquoi nous faire confiance</span>
+          <div>
+            <h2>Une gestion de copropriété qui rassure avant tout.</h2>
+            <p class="lead">Un bon syndic ne se remarque pas par de grands discours. Il se voit dans la clarté des comptes, la disponibilité, le suivi et la capacité à tenir l'immeuble dans la durée.</p>
+          </div>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-card" data-reveal>
+            <span class="card-num">01 · Comptes</span>
+            <div>
+              <h3>Comptabilité séparée par bâtiment</h3>
+              <p>Chaque copropriété bénéficie d'un suivi distinct, avec fonds de roulement et fonds de réserve clairement identifiés.</p>
+            </div>
+          </article>
+          <article class="trust-card" data-reveal>
+            <span class="card-num">02 · Suivi</span>
+            <div>
+              <h3>Gestion technique et administrative</h3>
+              <p>Coordination des entreprises, suivi des travaux, préparation des assemblées et gestion quotidienne de l'immeuble.</p>
+            </div>
+          </article>
+          <article class="trust-card" data-reveal>
+            <span class="card-num">03 · Sécurité</span>
+            <div>
+              <h3>Agréée IPI et assurée AXA</h3>
+              <p>Un cadre professionnel reconnu, une déontologie contrôlée et une responsabilité civile professionnelle couverte.</p>
+            </div>
+          </article>
+          <article class="trust-card" data-reveal>
+            <span class="card-num">04 · Présence</span>
+            <div>
+              <h3>Une permanence en dehors des heures</h3>
+              <p>Parce qu'un immeuble ne s'arrête pas à 17h, un service de permanence prend le relais après les heures de bureau.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem" aria-labelledby="problem-title">
+      <div class="problem-inner">
+        <div data-reveal>
+          <span class="eyebrow">Le vrai sujet</span>
+          <h2 id="problem-title">Changer de syndic, c'est souvent chercher plus de clarté.</h2>
+          <p class="lead" style="margin-top:18px">Les copropriétaires ne demandent pas l'impossible. Ils veulent comprendre, joindre quelqu'un, savoir où va l'argent et sentir que leur bâtiment est suivi.</p>
+        </div>
+        <div class="pain-list">
+          <div class="pain-item" data-reveal>
+            <div class="pain-icon">✓</div>
+            <div><h3>Des réponses accessibles</h3><p>Un interlocuteur local, identifié, capable de prendre en charge les questions courantes comme les urgences.</p></div>
+          </div>
+          <div class="pain-item" data-reveal>
+            <div class="pain-icon">✓</div>
+            <div><h3>Une gestion lisible</h3><p>Décomptes détaillés, documents préparés, assemblées structurées et informations compréhensibles.</p></div>
+          </div>
+          <div class="pain-item" data-reveal>
+            <div class="pain-icon">✓</div>
+            <div><h3>Un suivi dans la durée</h3><p>Une agence familiale, installée à Louvain-la-Neuve, qui connaît son territoire et ses copropriétés.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Nos services</span>
+          <div>
+            <h2>Un accompagnement complet pour votre patrimoine.</h2>
+            <p class="lead">Le syndic est notre cœur d'activité. Nous accompagnons aussi les propriétaires dans la vente, la location et la gestion locative.</p>
+          </div>
+        </div>
+        <div class="services-grid">
+          <article class="service-card" data-reveal>
+            <div class="service-tag">Service principal</div>
+            <h3>Syndic de copropriété</h3>
+            <p>Gestion technique, comptable, juridique et administrative de votre immeuble, avec comptes séparés, décomptes détaillés et suivi des décisions.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <div class="service-tag">Propriétaires</div>
+            <h3>Gestion locative</h3>
+            <p>Vous souhaitez louer sans gérer le quotidien ? L'agence prend le relais sur l'encaissement, le suivi technique et la relation locataire.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <div class="service-tag">Transaction</div>
+            <h3>Vente immobilière</h3>
+            <p>Estimation, mise en marché, négociation et accompagnement jusqu'à l'acte : un suivi clair pour vendre dans de bonnes conditions.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <div class="service-tag">Mise en location</div>
+            <h3>Location</h3>
+            <p>Recherche de locataires, rédaction du bail, état des lieux et accompagnement administratif pour louer votre bien avec sérénité.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wide-image" aria-label="Image agence">
+      <div class="container">
+        <div class="image-panel" data-reveal>
+          <div class="quote-card">
+            <p>“L'immobilier est une question de confiance qui se construit.”</p>
+            <span>Une agence locale, familiale et ancrée dans le Brabant wallon.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agence">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual" data-reveal aria-hidden="true"></div>
+          <div class="about-copy" data-reveal>
+            <span class="eyebrow">L'agence</span>
+            <h2>Deux générations d'expertise immobilière.</h2>
+            <p class="copy">Fondée en 2003 par Eric Sterkendries, l'Agence de l'Équerre est une agence familiale installée à Louvain-la-Neuve. Rejoint par son fils Antoine en 2014, le bureau réunit aujourd'hui une équipe active sur le terrain, en syndic, courtage, gestion et administration.</p>
+            <p class="copy">Eric et Antoine sont également maîtres de stage-formateurs reconnus par l'IPI et l'IFAPME. Ce rôle de transmission renforce la crédibilité technique de l'agence et témoigne d'une expertise suivie dans la durée.</p>
+            <div class="people-grid">
+              <div class="person-card">
+                <strong>Eric Sterkendries</strong>
+                <span>Fondateur · Syndic et courtier agréé IPI · Expert judiciaire certifié</span>
+              </div>
+              <div class="person-card">
+                <strong>Antoine Sterkendries</strong>
+                <span>Associé · Syndic et courtier agréé IPI · Comptable de formation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section properties" aria-labelledby="properties-title">
+      <div class="container">
+        <div class="property-box">
+          <div class="property-card" data-reveal>
+            <div>
+              <span class="eyebrow">Acheter ou louer</span>
+              <h2 id="properties-title" style="margin-top:16px">Trouvez votre prochain bien en Brabant wallon.</h2>
+              <p class="lead" style="margin-top:18px">Appartements, maisons, commerces ou parkings : consultez les biens proposés par l'agence ou contactez-nous pour une recherche personnalisée.</p>
+            </div>
+            <div class="property-actions">
+              <a class="btn btn-primary" href="#">Voir les biens en vente</a>
+              <a class="btn btn-secondary" href="#">Voir les locations</a>
+            </div>
+          </div>
+          <div class="portal-card" data-reveal>
+            <div>
+              <span class="eyebrow">Copropriétaires</span>
+              <h3 style="margin-top:18px">Accès My Syndic</h3>
+              <p>Un accès dédié pour retrouver les documents et informations liés à votre copropriété.</p>
+            </div>
+            <a class="btn btn-dark" href="#">Accéder au portail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methode">
+      <div class="container method-wrap">
+        <div data-reveal>
+          <span class="eyebrow">Méthode</span>
+          <h2>Votre copropriété reprise avec méthode.</h2>
+          <p class="lead" style="margin-top:18px">L'objectif : rendre la transition simple, cadrée et lisible pour les copropriétaires.</p>
+        </div>
+        <div class="steps">
+          <article class="step" data-reveal>
+            <div class="step-num">01</div>
+            <div><h3>Analyse de la situation</h3><p>Nous échangeons sur votre immeuble, vos attentes, les urgences éventuelles et les points à clarifier.</p></div>
+          </article>
+          <article class="step" data-reveal>
+            <div class="step-num">02</div>
+            <div><h3>Reprise administrative</h3><p>Documents, contrats, comptes, historique et obligations : la base est structurée pour repartir proprement.</p></div>
+          </article>
+          <article class="step" data-reveal>
+            <div class="step-num">03</div>
+            <div><h3>Gestion quotidienne</h3><p>Suivi des fournisseurs, demandes techniques, comptabilité, coordination et accompagnement des copropriétaires.</p></div>
+          </article>
+          <article class="step" data-reveal>
+            <div class="step-num">04</div>
+            <div><h3>Transparence et reporting</h3><p>Assemblées préparées, comptes lisibles et information claire pour que chacun sache où en est la copropriété.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <div class="cta-panel" data-reveal>
+          <div>
+            <h2>Vous cherchez un syndic plus clair et plus disponible ?</h2>
+            <p class="lead">Parlons de votre immeuble, de vos attentes et de la manière dont l'Agence de l'Équerre peut reprendre ou accompagner votre copropriété.</p>
+          </div>
+          <a class="btn btn-primary" href="#contact">Demander une offre syndic</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info" data-reveal>
+          <span class="eyebrow">Contact</span>
+          <h2>Rencontrons-nous.</h2>
+          <p class="lead" style="margin-top:18px">Passez au bureau, appelez-nous ou envoyez un message. L'équipe vous répondra avec les informations utiles.</p>
+          <div class="info-list">
+            <div class="info-item"><strong>Bureau principal</strong><span>Place de l'Équerre, 29/102<br>1348 Louvain-la-Neuve</span></div>
+            <div class="info-item"><strong>Bureau secondaire</strong><span>Rue du Traité de Rome 8/003<br>1348 Louvain-la-Neuve</span></div>
+            <div class="info-item"><strong>Téléphone</strong><span>010/45 36 69</span></div>
+            <div class="info-item"><strong>Email</strong><span>info@agence-equerre.be</span></div>
+          </div>
+        </div>
+        <div class="contact-form" data-reveal>
+          <form action="#" method="post">
+            <div class="form-row">
+              <label>Nom<input type="text" name="nom" autocomplete="family-name" required></label>
+              <label>Prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+            </div>
+            <div class="form-row">
+              <label>Téléphone<input type="tel" name="telephone" autocomplete="tel"></label>
+              <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            </div>
+            <label>Votre message<textarea name="message" placeholder="Bonjour, nous cherchons un syndic pour notre copropriété..." required></textarea></label>
+            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+            <p class="form-note">Formulaire de démonstration : à connecter ensuite à Resend, Formspree ou au système choisi.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© Agence de l'Équerre — Louvain-la-Neuve</span>
+      <div class="footer-links">
+        <a href="#syndic">Syndic</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    revealEls.forEach((el) => observer.observe(el));
+
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+
+    function setMenu(open){
+      document.body.classList.toggle('menu-open', open);
+      mobileMenu.classList.toggle('is-open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? 'Fermer' : 'Menu';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      setMenu(!mobileMenu.classList.contains('is-open'));
+    });
+    mobileLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+
+    const heroBg = document.querySelector('.hero-bg');
+    window.addEventListener('scroll', () => {
+      const y = Math.min(window.scrollY, 700);
+      if(heroBg) heroBg.style.transform = `translateY(${y * 0.06}px) scale(1.035)`;
+    }, { passive:true });
+  </script>
+</body>
+</html>
