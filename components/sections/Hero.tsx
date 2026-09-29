@@ -1,56 +1,83 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 
 export default function Hero() {
+  const common = {
+    alt: "Immeubles résidentiels à Louvain-la-Neuve",
+    sizes: "100vw",
+  };
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({
+    ...common,
+    src: "/Hero-image.jpg",
+    width: 2000,
+    height: 1500,
+    quality: 75,
+  });
+  const {
+    props: { srcSet: mobile, ...imageProps },
+  } = getImageProps({
+    ...common,
+    src: "/Hero-image-mobile.jpg",
+    width: 800,
+    height: 1200,
+    quality: 75,
+  });
+
   return (
-    <section className="hero hero-fullwidth" id="hero">
-      <Image
-        src="/Hero-image.jpg"
-        alt="Immeubles résidentiels modernes à Louvain-la-Neuve"
-        fill
-        priority
-        style={{ objectFit: "cover" }}
-        sizes="100vw"
-      />
+    <section className="hero-fullwidth" id="hero">
+      <picture className="hero-picture">
+        <source media="(min-width: 721px)" srcSet={desktop} />
+        <source media="(max-width: 720px)" srcSet={mobile} />
+        {/* getImageProps conserve l'optimisation Next.js dans ce picture responsive. */}
+        <img
+          {...imageProps}
+          alt={common.alt}
+          className="hero-image"
+          fetchPriority="high"
+        />
+      </picture>
 
       <div className="hero-overlay" />
 
-      {/* Logo dans le ciel, centré sur la moitié gauche */}
       <div className="hero-logo-zone">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/logo-equerre-ronds-hero.svg"
-          alt="Agence de l'Equerre"
+          alt=""
+          width={430}
+          height={323}
           className="hero-logo-svg"
         />
       </div>
 
-      {/* Contenu dans un container centré, aligné à droite */}
       <div className="hero-container">
         <div className="hero-content-right">
           <p className="type-eyebrow hero-eyebrow">
-            Syndic · Courtage · Gestion locative
+            Syndic · Courtage · Régie de biens
           </p>
           <h1 className="hero-title-fw">
-            L&apos;agence de l&apos;Equerre,
-            <br />
-            le partenaire immobilier
-            <br />
-            à votre mesure.
+            Votre immobilier, géré avec rigueur et proximité.
           </h1>
           <p className="hero-lead-fw">
-            Depuis 2003, l&apos;Agence de l&apos;Equerre accompagne copropriétaires et
-            propriétaires à Louvain-la-Neuve et dans toute la région. Syndic,
-            vente, location, gestion — une seule équipe, un seul interlocuteur.
+            Depuis 2003, notre agence familiale accompagne copropriétaires et
+            propriétaires depuis Louvain-la-Neuve. Syndic, vente, location et
+            gestion : une équipe engagée, au plus près de vos biens.
           </p>
           <div className="hero-actions-fw">
             <a href="#contact" className="btn-primary">
-              Demander un devis
+              Parler de votre projet
             </a>
             <a href="#services" className="btn-secondary btn-secondary-hero">
               Découvrir nos services
             </a>
           </div>
         </div>
+      </div>
+
+      <div className="hero-trust" aria-label="Nos engagements clés">
+        <div><strong>Depuis 2003</strong><span>Ancrage local</span></div>
+        <div><strong>Environ 80</strong><span>Bâtiments gérés</span></div>
+        <div><strong>24h/24</strong><span>Permanence syndic</span></div>
       </div>
     </section>
   );

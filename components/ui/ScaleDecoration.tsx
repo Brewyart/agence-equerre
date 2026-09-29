@@ -17,11 +17,7 @@ export default function ScaleDecoration() {
 
   return (
     <div className="scale-decoration" aria-hidden="true">
-      <div className="scale-track" ref={trackRef}>
-        {Array.from({ length: 120 }).map((_, i) => (
-          <img key={i} src="/scale-dark.svg" alt="" className="scale-segment" />
-        ))}
-      </div>
+      <div className="scale-track" ref={trackRef} />
     </div>
   );
 }

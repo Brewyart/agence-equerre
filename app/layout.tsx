@@ -17,18 +17,29 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.agence-equerre.be"),
   title: "Agence de l'Equerre — Syndic et courtier immobilier à Louvain-la-Neuve",
   description:
     "Syndic de copropriété, courtage, location et gestion locative en Brabant wallon. Agence familiale agréée IPI, active depuis 2003.",
   openGraph: {
     title: "Agence de l'Equerre — Immobilier en Brabant wallon",
     description:
-      "Syndic, courtage et gestion locative. Une équipe de 10 professionnels agréés IPI à Louvain-la-Neuve.",
+      "Syndic, courtage, expertise et gestion locative par une agence familiale active depuis 2003.",
     url: "https://www.agence-equerre.be",
     siteName: "Agence de l'Equerre",
     locale: "fr_BE",
     type: "website",
+    images: [
+      {
+        url: "/Hero-image.jpg",
+        width: 2000,
+        height: 1500,
+        alt: "Agence de l'Equerre à Louvain-la-Neuve",
+      },
+    ],
   },
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -44,6 +55,7 @@ export default function RootLayout({
     >
       <head>
         <script
+          id="theme-script"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

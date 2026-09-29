@@ -22,7 +22,7 @@ export default function RevealOnScroll({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => el.classList.add("visible"), delay);
+          el.classList.add("visible");
           observer.unobserve(el);
         }
       },
@@ -37,6 +37,7 @@ export default function RevealOnScroll({
     <div
       ref={ref}
       className={`${isTitle ? "reveal-title" : "reveal"} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>

@@ -13,12 +13,12 @@ const leadership = [
 ];
 
 const team = [
-  { name: "Clarence Van Brandt", role: "Syndic et courtier agréé I.P.I. 517.851" },
+  { name: "Clarence Van Brandt", role: "Syndic agréé I.P.I. 517.851" },
   { name: "Luca Di Marco", role: "Syndic agréé I.P.I. 518.504" },
   { name: "Shaony Sneessens", role: "Syndic et courtier agréé I.P.I. 519.871" },
+  { name: "Camille Pirlot", role: "Conseillère immobilière" },
   { name: "Olivia Lemaire", role: "Responsable du secrétariat" },
-  { name: "Séverine Mathier", role: "Secrétaire" },
-  { name: "Amaury Deprez", role: "Conseiller immobilier" },
+  { name: "Julie Vananderode", role: "Secrétaire" },
   { name: "Charles Otu", role: "Building maintenance" },
   { name: "Da Costa Maria Aparecida", role: "Building maintenance" },
 ];
@@ -40,22 +40,26 @@ export default function About() {
           <RevealOnScroll>
             <div className="about-image">
               <Image
-                src="/team-agence.jpg"
-                alt="L'équipe de l'Agence de l'Equerre autour de plans architecturaux"
+                src="/Esprit-Courbevoie-2023-HD-3.jpg"
+                alt="Ensemble résidentiel contemporain entouré d'espaces verts"
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 980px) 100vw, 50vw"
               />
+              <div className="about-image-caption">
+                <span>Notre terrain</span>
+                Louvain-la-Neuve et bien au-delà
+              </div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={100}>
             <div>
               <p className="type-lead" style={{ marginBottom: "var(--space-lg)" }}>
-                Fondée en 2003 par Eric Sterkendries, l&apos;Agence de l&apos;Equerre est
-                une affaire de famille. Rejoint par son fils Antoine en 2014, le
-                bureau réunit aujourd&apos;hui une équipe de 10 personnes — syndics,
-                courtiers, gestionnaires et personnel de terrain.
+                Fondée en 2003, l&apos;Agence de l&apos;Equerre est une affaire de
+                famille. Rejoint par son fils Antoine en 2014, Eric Sterkendries
+                dirige une équipe pluridisciplinaire de syndics, courtiers,
+                conseillers et personnel de terrain.
               </p>
               <p
                 className="type-body"
@@ -65,9 +69,10 @@ export default function About() {
                   marginBottom: "var(--space-lg)",
                 }}
               >
-                Eric et Antoine sont tous deux maîtres de stage-formateurs
-                reconnus par l&apos;IPI et l&apos;IFAPME. Ils forment la prochaine
-                génération de professionnels de l&apos;immobilier.
+                Eric et Antoine assurent personnellement la gestion des biens
+                confiés à l&apos;agence. Tous deux maîtres de stage-formateurs pour
+                l&apos;IPI et l&apos;IFAPME, ils associent connaissance de chaque
+                immeuble et transmission du métier.
               </p>
 
               <div className="team-cards">
@@ -87,6 +92,11 @@ export default function About() {
                   </div>
                 ))}
               </div>
+
+              <p className="about-experts">
+                Selon les missions, l&apos;agence s&apos;entoure aussi d&apos;architectes,
+                d&apos;ingénieurs et de géomètres externes.
+              </p>
             </div>
           </RevealOnScroll>
         </div>

@@ -4,7 +4,6 @@ import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Properties from "@/components/sections/Properties";
 import Method from "@/components/sections/Method";
-import Testimonials from "@/components/sections/Testimonials";
 import FinalCta from "@/components/sections/FinalCta";
 import Contact from "@/components/sections/Contact";
 
@@ -15,7 +14,6 @@ export const sectionRegistry: Record<string, React.ComponentType> = {
   about: About,
   properties: Properties,
   method: Method,
-  testimonials: Testimonials,
   "final-cta": FinalCta,
   contact: Contact,
 };

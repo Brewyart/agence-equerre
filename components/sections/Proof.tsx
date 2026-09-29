@@ -4,8 +4,8 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 const proofs = [
   {
     icon: "/Certifie.svg",
-    label: "Agréés IPI",
-    desc: "Chaque membre de l'équipe est agréé par l'Institut professionnel des Agents Immobiliers.",
+    label: "Agence agréée IPI",
+    desc: "Nos administrateurs et syndics agréés exercent dans le respect du code de déontologie de l'IPI.",
   },
   {
     icon: "/Assurance.svg",
@@ -13,14 +13,14 @@ const proofs = [
     desc: "Responsabilité civile professionnelle et cautionnement via AXA Belgium SA.",
   },
   {
-    icon: "20+",
-    label: "Années d'expérience",
-    desc: "Ancrage local depuis 2003. Nous connaissons le Brabant wallon et ses copropriétés.",
+    icon: "2003",
+    label: "Fondation de l'agence",
+    desc: "Plus de deux décennies d'ancrage local et une connaissance concrète des copropriétés.",
   },
   {
     icon: "~80",
     label: "Bâtiments gérés",
-    desc: "De Louvain-la-Neuve à Bruxelles, en passant par Wavre, Ottignies et Namur.",
+    desc: "De Louvain-la-Neuve à Bruxelles, en passant par Wavre, Ottignies, Jodoigne, Namur et Gembloux.",
   },
 ];
 

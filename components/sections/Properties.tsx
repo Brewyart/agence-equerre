@@ -1,104 +1,80 @@
-"use client";
-
-import { useRef } from "react";
 import Image from "next/image";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 
-const properties = [
+const catalogues = [
   {
-    image: "/Immo.png",
-    title: "Appartement à Louvain-la-Neuve",
-    type: "Vente",
+    eyebrow: "Acheter",
+    title: "Biens à vendre",
+    description:
+      "Appartements, maisons, emplacements et biens d'investissement sélectionnés par notre équipe.",
+    href: "https://www.agence-equerre.be/index.php?page=ventes",
+    cta: "Voir les ventes",
   },
   {
-    image: "/Immo.png",
-    title: "Maison à Wavre",
-    type: "Vente",
-  },
-  {
-    image: "/Immo.png",
-    title: "Studio à Ottignies",
-    type: "Location",
-  },
-  {
-    image: "/Immo.png",
-    title: "Duplex à Louvain-la-Neuve",
-    type: "Vente",
-  },
-  {
-    image: "/Immo.png",
-    title: "Commerce à Bruxelles",
-    type: "Location",
+    eyebrow: "Louer",
+    title: "Biens à louer",
+    description:
+      "Des biens disponibles à Louvain-la-Neuve et dans les villes où notre agence est active.",
+    href: "https://www.agence-equerre.be/index.php?page=locations",
+    cta: "Voir les locations",
   },
 ];
 
 export default function Properties() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  function scrollCarousel(direction: number) {
-    if (!trackRef.current) return;
-    const cardWidth = trackRef.current.querySelector(".property-card")?.clientWidth ?? 400;
-    trackRef.current.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
-  }
-
   return (
-    <section className="section-padding section-light" id="properties">
+    <section className="properties-section section-padding" id="properties">
       <div className="container-bw">
         <RevealOnScroll>
-          <div className="properties-header">
+          <div className="properties-intro">
             <div>
-              <p className="type-eyebrow" style={{ color: "var(--color-accent)", marginBottom: "var(--space-md)" }}>
-                Acheter ou louer
-              </p>
-              <h2 className="type-h2">
-                Trouvez votre prochain bien en Brabant wallon
-              </h2>
+              <p className="type-eyebrow">Acheter ou louer</p>
+              <h2 className="type-h2">Trouvez votre prochain lieu de vie</h2>
             </div>
-            <div className="carousel-controls">
-              <button className="carousel-btn" onClick={() => scrollCarousel(-1)} aria-label="Précédent">
-                ←
-              </button>
-              <button className="carousel-btn" onClick={() => scrollCarousel(1)} aria-label="Suivant">
-                →
-              </button>
-            </div>
+            <p className="type-lead">
+              Nos annonces restent synchronisées sur le catalogue immobilier de
+              l&apos;agence. Consultez les disponibilités ou confiez-nous une
+              recherche personnalisée.
+            </p>
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll delay={100}>
-          <div className="carousel-wrapper">
-            <div className="carousel-track" ref={trackRef}>
-              {properties.map((p, i) => (
-                <div key={i} className="property-card">
-                  <div className="property-image">
-                    <Image
-                      src={p.image}
-                      alt={p.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 620px) 84vw, 400px"
-                    />
-                    <span className="property-pill">{p.type}</span>
-                  </div>
-                  <div className="property-info">
-                    <h3 className="property-title">{p.title}</h3>
-                  </div>
-                </div>
-              ))}
+        <div className="property-gateway">
+          <RevealOnScroll className="property-visual-wrap">
+            <div className="property-visual">
+              <Image
+                src="/Immo.png"
+                alt="Quartier résidentiel et commerces à Louvain-la-Neuve"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 980px) 100vw, 50vw"
+              />
+              <div className="property-visual-label">
+                <span>Une recherche sur mesure ?</span>
+                <a href="#contact">Dites-nous ce que vous cherchez <span aria-hidden="true">→</span></a>
+              </div>
             </div>
-          </div>
-        </RevealOnScroll>
+          </RevealOnScroll>
 
-        <RevealOnScroll delay={200}>
-          <div className="properties-actions" style={{ marginTop: "var(--space-xl)" }}>
-            <a href="https://www.agence-equerre.be/index.php?page=ventes" className="btn-primary" target="_blank" rel="noopener noreferrer">
-              Voir les biens en vente
-            </a>
-            <a href="https://www.agence-equerre.be/index.php?page=locations" className="btn-secondary" target="_blank" rel="noopener noreferrer">
-              Voir les biens en location
-            </a>
+          <div className="catalogue-cards">
+            {catalogues.map((catalogue, index) => (
+              <RevealOnScroll key={catalogue.title} delay={index * 100}>
+                <a
+                  className="catalogue-card"
+                  href={catalogue.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="type-eyebrow">{catalogue.eyebrow}</span>
+                  <h3>{catalogue.title}</h3>
+                  <p>{catalogue.description}</p>
+                  <span className="catalogue-link">
+                    {catalogue.cta} <span aria-hidden="true">↗</span>
+                  </span>
+                </a>
+              </RevealOnScroll>
+            ))}
           </div>
-        </RevealOnScroll>
+        </div>
       </div>
     </section>
   );

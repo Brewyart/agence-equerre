@@ -26,6 +26,18 @@ const services = [
     desc: "Vous êtes propriétaire mais ne souhaitez pas gérer au quotidien ? Nous prenons le relais : encaissement, suivi technique, relations locataires.",
     pill: "Gestion",
   },
+  {
+    icon: "/Certifie.svg",
+    title: "Expertise immobilière",
+    desc: "Une lecture expérimentée des bâtiments, bureaux, commerces et logements, appuyée par une expertise judiciaire certifiée.",
+    pill: "Expertise",
+  },
+  {
+    icon: "/Gestion.svg",
+    title: "Régie de biens",
+    desc: "Administration suivie de votre patrimoine immobilier, coordination des intervenants et relation de proximité avec les occupants.",
+    pill: "Régie",
+  },
 ];
 
 export default function Services() {

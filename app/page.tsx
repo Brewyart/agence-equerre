@@ -5,11 +5,35 @@ import Footer from "@/components/ui/Footer";
 import ScaleDecoration from "@/components/ui/ScaleDecoration";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: "Agence de l'Equerre",
+    url: "https://www.agence-equerre.be/",
+    telephone: "+3210453669",
+    email: "info@agence-equerre.be",
+    foundingDate: "2003",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Place de l'Equerre 29/102",
+      postalCode: "1348",
+      addressLocality: "Louvain-la-Neuve",
+      addressCountry: "BE",
+    },
+    areaServed: ["Brabant wallon", "Namur", "Bruxelles", "Knokke-Heist"],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <Header />
       <ScaleDecoration />
-      <main>
+      <main id="main-content">
         {sectionsConfig.sections.map((key: string) => {
           const Section = sectionRegistry[key];
 
