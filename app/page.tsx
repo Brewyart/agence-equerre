@@ -1,4 +1,5 @@
 import { sectionRegistry } from "@/lib/section-registry";
+import { siteUrl } from "@/lib/site";
 import sectionsConfig from "@/project/sections.json";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
@@ -9,7 +10,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     name: "Agence de l'Equerre",
-    url: "https://www.agence-equerre.be/",
+    url: `${siteUrl}/`,
     telephone: "+3210453669",
     email: "info@agence-equerre.be",
     foundingDate: "2003",

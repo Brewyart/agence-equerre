@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Bebas_Neue } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,7 +18,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.agence-equerre.be"),
+  metadataBase: new URL(siteUrl),
   title: "Agence de l'Equerre — Syndic et courtier immobilier à Louvain-la-Neuve",
   description:
     "Syndic de copropriété, courtage, location et gestion locative en Brabant wallon. Agence familiale agréée IPI, active depuis 2003.",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: "Agence de l'Equerre — Immobilier en Brabant wallon",
     description:
       "Syndic, courtage, expertise et gestion locative par une agence familiale active depuis 2003.",
-    url: "https://www.agence-equerre.be",
+    url: siteUrl,
     siteName: "Agence de l'Equerre",
     locale: "fr_BE",
     type: "website",
